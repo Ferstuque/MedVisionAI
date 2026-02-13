@@ -1,0 +1,115 @@
+# Docker Compose - Ambiente de Produção
+# Uso: docker-compose -f docker-compose.prod.yml up -d
+
+version: '3.9'
+
+services:
+  # Backend FastAPI (Produção com Gunicorn + Uvicorn workers)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: medvision_backend_prod
+    ports:
+      - "8000:8000"
+    volumes:
+      - medvision_data:/app/data
+      - backend_logs:/app/logs
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - YOLO_MODEL_PATH=/app/data/models/yolov8n.pt
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - STORAGE_TYPE=s3
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+      - AWS_REGION=${AWS_REGION}
+      - REDIS_URL=redis://redis:6379/0
+      - WORKERS=4
+    env_file:
+      - ./backend/.env.production
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - medvision_network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Frontend React + Nginx (Produção)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: medvision_frontend_prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    environment:
+      - VITE_API_URL=https://api.medvision.ai
+      - VITE_WS_URL=wss://api.medvision.ai
+    depends_on:
+      - backend
+    networks:
+      - medvision_network
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Redis (Cache e Jobs)
+  redis:
+    image: redis:7-alpine
+    container_name: medvision_redis_prod
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    networks:
+      - medvision_network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  medvision_data:
+    driver: local
+  backend_logs:
+    driver: local
+  nginx_logs:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  medvision_network:
+    driver: bridge

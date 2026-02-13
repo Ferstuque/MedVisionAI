@@ -1,0 +1,12 @@
+# Dockerfile Frontend - Desenvolvimento
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instala dependências globais
+RUN npm install -g vite
+
+# Expõe porta do Vite
+EXPOSE 5173
+
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

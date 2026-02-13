@@ -8,6 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](./docker-compose.yml)
 [![Cloud Run](https://img.shields.io/badge/GCP-Cloud%20Run-4285F4.svg)](https://cloud.google.com/run)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-optional-lightgrey.svg)](./.github/workflows/README_WORKFLOWS.md)
 
 **Plataforma de Análise Multimodal Cirúrgica com Inteligência Artificial**
 
@@ -322,12 +323,15 @@ echo -n "SUA_CHAVE_GEMINI" | gcloud secrets create gemini-api-key --data-file=-
 
 3. **Deploy via GitHub Actions:**
 
+> ⚠️ **Nota**: Os workflows de CI/CD estão **desabilitados temporariamente** para o MVP. Para habilitá-los, configure as secrets do GCP e siga o guia em [`.github/workflows/README_WORKFLOWS.md`](./.github/workflows/README_WORKFLOWS.md).
+
 - Fork do repositório
 - Adicione secrets no GitHub:
   - `GCP_PROJECT_ID`
   - `GCP_SA_KEY` (Service Account JSON)
-  - `GEMINI_API_KEY_TEST` (para CI)
+  - `GEMINI_API_KEY` (para production)
 
+- Habilite workflows em `.github/workflows/cd.yml`
 - Push na branch `main` ativa deploy automático
 
 4. **Deploy Manual:**

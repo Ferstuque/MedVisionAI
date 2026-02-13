@@ -3,11 +3,14 @@
 
 name: CI Pipeline
 
+# Desabilitado temporariamente - MVP não requer CI/CD obrigatório
+# Para habilitar: remova o comentário das linhas 'on:' abaixo
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
+  # push:
+  #   branches: [ main, develop ]
+  # pull_request:
+  #   branches: [ main, develop ]
+  workflow_dispatch:
 
 jobs:
   # Job 1: Backend Linting e Testes

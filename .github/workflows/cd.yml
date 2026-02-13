@@ -3,9 +3,11 @@
 
 name: CD Pipeline
 
+# Desabilitado temporariamente até configurar secrets do GCP
+# Para habilitar: remova o comentário das linhas 'on:' abaixo
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   workflow_dispatch:
 
 env:

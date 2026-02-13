@@ -267,7 +267,7 @@ Abra PR no GitHub com:
 
 ## 📄 Licença
 
-Ao contribuir, você concorda que suas contribuições serão licenciadas sob a [MIT License](LICENSE).
+Ao contribuir, você concorda que suas contribuições serão licenciadas sob a [MIT License](../LICENSE).
 
 ---
 

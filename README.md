@@ -32,6 +32,21 @@ Sistema fullstack para análise em tempo real de vídeos e áudios cirúrgicos g
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
+## 📚 Documentação Adicional
+
+- 📖 [**Instalação Local**](./docs/TESTE_LOCAL.md) - Guia completo de setup e troubleshooting
+- 🤝 [**Contribuindo**](./docs/CONTRIBUTING.md) - Como contribuir para o projeto
+- 🚀 [**Deploy GitHub**](./docs/DEPLOY_GITHUB.md) - Publicação e release no GitHub
+- 🎬 [**Roteiro de Apresentação**](./docs/ROTEIRO_APRESENTACAO.md) - Script para vídeo de demonstração
+- 📝 [**Changelog**](./docs/CHANGELOG.md) - Histórico de versões
+- 🧹 [**Cleanup**](./docs/CLEANUP.md) - Arquivos excluídos do repositório
+- 📦 [**Releases**](./docs/releases/) - Notas de lançamento por versão
+- 🔬 [**Fine-tuning YOLOv8**](./docs/FINE_TUNING_GUIDE.md) - Guia de treinamento
+- ⚡ [**Colab Quickstart**](./docs/COLAB_QUICKSTART.md) - Experimente no Google Colab
+- 🏗️ [**Infraestrutura**](./infrastructure/README.md) - IaC com Terraform
+- 🧪 [**Testes**](./backend/tests/README_TESTS.md) - Suite de testes automatizados
+- ⚙️ [**CI/CD**](./.github/workflows/README_WORKFLOWS.md) - Configuração de pipelines
+
 ---
 
 ## 🎯 Visão Geral

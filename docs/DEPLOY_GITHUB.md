@@ -138,10 +138,10 @@ Acesse: http://localhost:5173
 
 ### 📚 Documentação
 
-- [README Completo](./README.md)
-- [Guia de Instalação](./README.md#instalação)
+- [README Completo](../README.md)
+- [Guia de Instalação](../README.md#instalação)
 - [API Documentation](http://localhost:8000/docs)
-- [Infraestrutura (IaC)](./infrastructure/README.md)
+- [Infraestrutura (IaC)](../infrastructure/README.md)
 
 ### ⚠️ Avisos
 
@@ -295,13 +295,13 @@ Atualize o README com:
 ## 📸 Screenshots
 
 ### Dashboard Principal
-![Dashboard](./docs/images/dashboard.png)
+![Dashboard](./images/dashboard.png)
 
 ### Análise de Vídeo em Tempo Real
-![Video Analysis](./docs/images/video-analysis.png)
+![Video Analysis](./images/video-analysis.png)
 
 ### Relatório Gerado por IA
-![Report](./docs/images/report.png)
+![Report](./images/report.png)
 ```
 
 ### 🎥 Vídeo Demo (Recomendado)

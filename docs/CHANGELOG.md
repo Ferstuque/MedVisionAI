@@ -116,7 +116,7 @@ Primeira release pública do **MedVision AI** - Plataforma de Análise Multimoda
 
 ### 📝 Licença
 
-MIT License - Veja [LICENSE](LICENSE)
+MIT License - Veja [LICENSE](../LICENSE)
 
 ---
 

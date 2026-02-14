@@ -87,9 +87,22 @@ class GeminiService:
             
             # Upload do arquivo para Gemini
             audio_path = Path(audio_file_path)
+            
+            # Verifica se arquivo existe e tamanho
+            if not audio_path.exists():
+                logger.error(f"Arquivo de áudio não encontrado: {audio_file_path}")
+                return "[Transcrição não disponível - arquivo não encontrado]"
+            
+            file_size = audio_path.stat().st_size
+            logger.info(f"Arquivo de áudio: {audio_path.name} ({file_size / 1024:.1f} KB)")
+            
+            # Verifica extensão
+            if audio_path.suffix.lower() == '.webm':
+                logger.info("⚠️ Arquivo WebM detectado - formato gravado pelo navegador")
+            
             logger.info(f"Fazendo upload do arquivo para Gemini API...")
             audio_file = genai.upload_file(path=str(audio_path))
-            logger.info(f"Arquivo uploaded: {audio_file.uri}")
+            logger.info(f"✅ Arquivo uploaded para Gemini: {audio_file.uri} (mime_type: {audio_file.mime_type})")
             
             # Prompt para transcrição
             prompt = """

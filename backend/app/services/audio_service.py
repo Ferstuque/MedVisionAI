@@ -222,9 +222,12 @@ class AudioService:
         logger.info("Gerando transcrição do áudio WebM...")
         try:
             transcription = await self.gemini_service.transcribe_audio(file_path)
+            if not transcription or transcription.startswith("[Transcrição não disponível"):
+                logger.warning("Transcrição Gemini falhou ou retornou mensagem de erro")
+                transcription = "[Transcrição não disponível para este áudio WebM. O formato pode não ser compatível com o serviço de transcrição.]"
         except Exception as e:
-            logger.error(f"Erro ao transcrever áudio WebM: {e}")
-            transcription = None
+            logger.error(f"Erro ao transcrever áudio WebM: {e}", exc_info=True)
+            transcription = f"[Transcrição não disponível - erro: {str(e)[:100]}]"
         
         # Cria segmentos simulados (a cada 10 segundos)
         num_segments = max(1, int(estimated_duration / 10))

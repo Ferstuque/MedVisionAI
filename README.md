@@ -7,11 +7,54 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](./docker-compose.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
+<div align="center">
+
+### 🩺💜 Inteligência Artificial a Serviço da Saúde da Mulher
+
+</div>
+
+## 🌟 O que é o MedVision AI?
+
+Imagine um **assistente inteligente** que consegue "assistir" vídeos de cirurgias ginecológicas e "ouvir" consultas médicas, ajudando profissionais de saúde a cuidar melhor das pacientes. É exatamente isso que o **MedVision AI** faz!
+
+### 👁️ Como funciona?
+
+**🎥 Análise de Vídeos Cirúrgicos**  
+Treinamos uma **Inteligência Artificial especializada em visão computacional** para reconhecer instrumentos cirúrgicos e identificar situações que precisam de atenção durante procedimentos ginecológicos. É como ter um par de olhos extra que nunca perde um detalhe!
+
+**🎤 Análise de Áudio de Consultas**  
+O sistema também consegue ouvir e entender consultas médicas, identificando indicadores emocionais na voz da paciente (como estresse ou ansiedade) e transcrevendo tudo automaticamente para os registros médicos.
+
+**📋 Relatórios Automáticos Inteligentes**  
+Após analisar os vídeos e áudios, o sistema gera relatórios completos e organizados, poupando tempo dos profissionais e permitindo que se concentrem no que realmente importa: **cuidar das pacientes**!
+
+### 🎯 Por que isso é importante?
+
+- ✅ **Auxilia médicos** a identificar situações críticas mais rapidamente
+- ✅ **Reduz sobrecarga** ao automatizar tarefas repetitivas de documentação
+- ✅ **Melhora o atendimento** com registro completo e análise detalhada
+- ✅ **Democratiza conhecimento** especializado através da tecnologia
+- ✅ **Foca na saúde da mulher**, uma área que merece toda atenção e inovação
+
+> 💡 **Projeto Acadêmico**: Desenvolvido como estudo de viabilidade técnica de IA aplicada à medicina. Este é um **protótipo educacional** que demonstra o potencial da tecnologia para revolucionar o cuidado em saúde.
+
+---
+
+<details>
+<summary><b>📚 Para profissionais técnicos: Detalhes da implementação</b></summary>
+
 **Plataforma de Análise Multimodal Cirúrgica com Inteligência Artificial**
 
-Sistema fullstack para análise em tempo real de vídeos e áudios cirúrgicos ginecológicos, utilizando **YOLOv8** para detecção de instrumentos e anomalias visuais, **librosa** para análise de indicadores psicológicos de áudio, e **Google Gemini 2.5 Flash** para geração de relatórios clínicos detalhados.
+Sistema fullstack para análise em tempo real de vídeos e áudios cirúrgicos ginecológicos, utilizando **YOLOv8** customizado para detecção de instrumentos e anomalias visuais, **librosa** para análise de indicadores psicológicos de áudio, e **Google Gemini 2.5 Flash** para geração de relatórios clínicos detalhados.
 
->  **MVP Acadêmico** - Projeto desenvolvido como estudo de viabilidade técnica de IA multimodal em contexto médico. Demonstra integração de visão computacional, processamento de áudio e modelos de linguagem avançados em um sistema de suporte à decisão clínica.
+**Stack Técnico:**
+- **Backend**: Python 3.11, FastAPI, Uvicorn, YOLOv8, OpenCV, Librosa
+- **Frontend**: React 18, Vite 5, TailwindCSS
+- **IA Generativa**: Google Gemini 2.5 Flash (multimodal)
+- **Cloud**: Azure Container Apps, Azure Container Registry
+- **Features**: WebSocket real-time, processamento de vídeo frame-by-frame, análise acústica temporal
+
+</details>
 
 ---
 

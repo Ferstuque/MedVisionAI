@@ -61,36 +61,36 @@ O **MedVision AI** é uma solução completa para análise assistida por IA de p
 ```mermaid
 graph TB
     subgraph "Camada de Apresentação"
-        USER["đ Usuário<br/>Navegador Web"]
+        USER["👤 Usuário<br/>Navegador Web"]
     end
 
     subgraph "Azure Container Apps Environment"
         subgraph "Frontend Container"
-            REACT["âī¸ React 18<br/>Vite 5<br/>TailwindCSS<br/>Nginx"]
+            REACT["⚛️ React 18<br/>Vite 5<br/>TailwindCSS<br/>Nginx"]
         end
         
         subgraph "Backend Container"
-            API["âĄ FastAPI + Uvicorn<br/>WebSocket Server"]
-            YOLO["đ YOLOv8 Custom<br/>DetecÃ§Ão Instrumentos"]
-            AUDIO["đĩ Librosa<br/>AnÃĄlise Ãudio"]
-            CV["đš OpenCV<br/>Processamento VÃ­deo"]
+            API["⚡ FastAPI + Uvicorn<br/>WebSocket Server"]
+            YOLO["🔍 YOLOv8 Custom<br/>Detecção de Instrumentos"]
+            AUDIO["🎵 Librosa<br/>Análise de Áudio"]
+            CV["📹 OpenCV<br/>Processamento de Vídeo"]
         end
         
-        ACR["đĻ Azure Container Registry<br/>Imagens Docker"]
-        LOGS["đ Log Analytics<br/>Monitoramento"]
+        ACR["📦 Azure Container Registry<br/>Imagens Docker"]
+        LOGS["📊 Log Analytics<br/>Monitoramento"]
     end
     
-    subgraph "ServiÃ§os Externos"
-        GEMINI["đ¤ Gemini 2.5 Flash<br/>RelatÃģrios + TranscriÃ§Ão"]
+    subgraph "Serviços Externos"
+        GEMINI["🤖 Gemini 2.5 Flash<br/>Relatórios + Transcrição"]
     end
     
-    USER -->|"Upload VÃ­deo/Ãudio"| REACT
+    USER -->|"Upload Vídeo/Áudio"| REACT
     REACT -->|"API REST<br/>+ WebSocket"| API
     API -->|"Frames"| YOLO
     API -->|"Arquivo"| AUDIO
-    API -->|"ExtraÃ§Ão"| CV
-    API -->|"AnÃĄlise"| GEMINI
-    GEMINI -->|"RelatÃģrio"| API
+    API -->|"Extração"| CV
+    API -->|"Análise"| GEMINI
+    GEMINI -->|"Relatório"| API
     API -->|"Alertas"| REACT
     REACT -->|"Resultados"| USER
     

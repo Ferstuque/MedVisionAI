@@ -253,10 +253,10 @@ Timestamps com severidade crítica: {', '.join(critical_moments) if critical_mom
 
 **TAREFA**
 
-Gere um laudo médico técnico DETALHADO em português (pt-BR) seguindo a estrutura:
+Gere um laudo médico técnico DETALHADO e COMPLETO em português (pt-BR) seguindo a estrutura:
 
 ## 📋 Sumário Executivo
-[Parágrafo conciso sobre o procedimento analisado, duração, e principais achados quantitativos]
+[Parágrafo conciso sobre o procedimento analisado, duração, principais achados quantitativos e contexto clínico geral]
 
 ## 🔍 Achados Detalhados
 
@@ -264,55 +264,108 @@ Gere um laudo médico técnico DETALHADO em português (pt-BR) seguindo a estrut
 - Descreva a presença, intensidade e localização de sangramento detectado
 - Avalie a adequação da hemostasia durante o procedimento
 - Identifique momentos de sangramento excessivo (com timestamps)
+- Compare com padrões esperados para o tipo de procedimento
 
 ### 🔧 Instrumentação Cirúrgica
-- **Liste ESPECIFICAMENTE** cada instrumento detectado (ex: pinça de Babcock, tesoura de Metzenbaum, trocarte, aspirador, bisturi elétrico)
-- Comente sobre o uso apropriado e técnica de manuseio
+- **Liste ESPECIFICAMENTE** cada instrumento detectado (ex: pinça de Babcock, tesoura de Metzenbaum, trocarte, aspirador, bisturi elétrico, afastador)
+- Para CADA instrumento: descreva quando aparece, como é usado, e se o uso é apropriado
+- Comente sobre o uso apropriado e técnica de manuseio observada
 - Identifique instrumentos que aparecem em momentos críticos
-- Avalie a ergonomia e coordenação dos movimentos
+- Avalie a ergonomia, coordenação dos movimentos e destreza do cirurgião
+- Se aplicável, identifique padrões de instrumentação específicos (laparoscopia, histeroscopia, etc.)
+
+### 🫀 Estruturas Anatômicas e Órgãos Identificados
+- **IDENTIFIQUE ESPECIFICAMENTE** órgãos visíveis no campo cirúrgico:
+  * Útero (corpo, istmo, colo)
+  * Ovários (direito/esquerdo)
+  * Trompas uterinas (fimbrias, ampola)
+  * Ligamentos (largo, redondo, útero-sacro)
+  * Bexiga (se visualizada)
+  * Peritônio e cavidade pélvica
+  * Intestino (alças intestinais se visíveis)
+  * Vasos sanguíneos principais
+- Descreva a qualidade da visualização de cada estrutura
+- Comente sobre a anatomia normal vs anormal observada
+- Identifique possíveis alterações estruturais (aderências, miomas, endometriose, cistos, etc.)
 
 ### ⚠️ Anomalias e Eventos Adversos
-- Detalhe cada tipo de anomalia detectada
-- Para "Instrument Detected": especifique qual instrumento e contexto
+- Detalhe cada tipo de anomalia detectada com descrição específica
+- Para "Instrument Detected": especifique qual instrumento e contexto de uso
 - Descreva movimentos anormais, tremores ou hesitações
 - Avalie obstruções de campo visual ou problemas de iluminação
+- Identifique possíveis complicações detectadas (lesões inadvertidas, perfurações, sangramento não controlado)
+- Liste eventos que requerem atenção especial ou revisão
 
-### 📍 Anatomia e Campo Cirúrgico
-- Identifique estruturas anatômicas visíveis
-- Comente sobre a qualidade da visualização
-- Avalie a dissecção e exposição dos tecidos
+### 🎯 Possíveis Indicações Cirúrgicas
+Baseado nos achados anatômicos, instrumentação e técnicas observadas, infira as **possíveis indicações clínicas** deste procedimento:
+- Miomectomia (remoção de miomas)
+- Ooforectomia (remoção de ovário)
+- Salpingectomia (remoção de trompa)
+- Histerectomia (remoção do útero - total/parcial)
+- Tratamento de endometriose
+- Cistectomia ovariana
+- Lise de aderências
+- Cirurgia de fertilidade
+- Laqueadura tubária
+- Outras indicações ginecológicas
+
+**Justifique cada indicação** com base nos instrumentos observados, tempo cirúrgico, regiões manipuladas e padrões técnicos.
+
+### 📍 Técnica Cirúrgica e Campo Operatório
+- Avalie a qualidade da exposição cirúrgica
+- Comente sobre a dissecção e manipulação dos tecidos
+- Avalie o posicionamento dos instrumentos e ergonomia
+- Descreva a progressão do procedimento ao longo do tempo
+- Identifique fases distintas do procedimento (se aplicável): acesso, dissecção, hemostasia, fechamento
 
 ## ⏱️ Linha do Tempo - Momentos Críticos
-[Para cada momento crítico, forneça:
-- Timestamp exato
-- Descrição do evento
+[Para cada momento crítico, forneça em formato de tabela ou lista:
+- Timestamp exato (formato MM:SS)
+- Descrição detalhada do evento
 - Instrumentos envolvidos
-- Recomendação específica]
+- Severidade (crítica/alta/média)
+- Possível significado clínico
+- Recomendação específica para revisão]
 
-## 💡 Recomendações Técnicas
-1. [Recomendação baseada em instrumentação]
-2. [Recomendação baseada em técnica cirúrgica]
-3. [Recomendação baseada em segurança]
-4. [Recomendação para follow-up ou revisão]
+## 💡 Recomendações Técnicas ao Cirurgião
+1. **Instrumentação**: [Recomendação específica sobre uso de instrumentos, se aplicável]
+2. **Técnica Cirúrgica**: [Sugestões sobre técnica observada, pontos de melhoria]
+3. **Segurança**: [Recomendações para prevenção de complicações]
+4. **Hemostasia**: [Orientações sobre controle de sangramento se relevante]
+5. **Follow-up**: [Sugestões de acompanhamento pós-operatório ou revisão de vídeo]
+6. **Documentação**: [Orientação sobre pontos que merecem documentação adicional]
+
+## 📊 Análise Estatística do Procedimento
+- Tempo total de procedimento: {analysis_result.duration_seconds:.1f}s ({analysis_result.duration_seconds // 60:.0f}min {analysis_result.duration_seconds % 60:.0f}s)
+- Densidade de detecções: [calcular detecções por minuto]
+- Distribuição de severidade: [percentuais de frames por categoria]
+- Taxa de eventos críticos: [frequência de momentos de alta gravidade]
 
 ## ⚙️ Limitações da Análise Automatizada
 [Parágrafo claro sobre:
-- Limitações do sistema de visão computacional
-- Necessidade de revisão por cirurgião especialista
-- Contexto clínico não disponível para a IA]
+- Limitações do sistema de visão computacional YOLOv8
+- O sistema detecta instrumentos e padrões visuais, mas não tem contexto clínico completo
+- Necessidade de revisão por cirurgião especialista para interpretação definitiva
+- Contexto pré-operatório, indicação cirúrgica confirmada, história clínica não disponíveis para a IA
+- Qualidade da imagem e ângulos de câmera podem limitar detecções
+- Sistema não substitui julgamento clínico do profissional]
 
 ## ⚖️ Disclaimer Médico-Legal
-**IMPORTANTE:** Este relatório foi gerado pelo sistema **Gemini 2.5 Flash** e não substitui avaliação médica profissional. Todas as detecções devem ser validadas por especialista qualificado em cirurgia ginecológica. O uso deste relatório é de responsabilidade exclusiva do profissional solicitante.
+**IMPORTANTE:** Este relatório foi gerado pelo sistema **Gemini 2.5 Flash** com base em análise automatizada de vídeo usando YOLOv8. **NÃO constitui diagnóstico médico** e não substitui avaliação médica profissional. Todas as detecções devem ser validadas por especialista qualificado em cirurgia ginecológica. O uso deste relatório é de responsabilidade exclusiva do profissional solicitante. A decisão clínica final é **exclusivamente do cirurgião responsável**.
 
 ---
 
 **DIRETRIZES CRÍTICAS**
-- Use terminologia médica apropriada e precisa
-- Seja ESPECÍFICO ao mencionar instrumentos - evite termos genéricos
-- Para cada anomalia, explique o que foi detectado e sua relevância clínica
-- Inclua timestamps sempre que mencionar eventos
-- Máximo 800 palavras para permitir análise detalhada
+- Use terminologia médica apropriada, precisa e específica
+- Seja EXTREMAMENTE ESPECÍFICO ao mencionar instrumentos - evite termos genéricos como "pinça" ou "tesoura" sem qualificação
+- Para cada órgão/estrutura identificado, descreva sua aparência e estado
+- Para cada anomalia detectada, explique o que foi visto e sua relevância clínica potencial
+- Inclua timestamps sempre que mencionar eventos temporais específicos
+- **NÃO limite o tamanho do relatório** - seja tão detalhado quanto necessário para uma análise completa (recomendado: 1200-1800 palavras)
+- Priorize DETALHAMENTO e ESPECIFICIDADE sobre brevidade
+- Correlacione achados visuais com possíveis diagnósticos e indicações cirúrgicas
 - Use emojis nos títulos para melhor organização visual
+- Se não houver informação suficiente em alguma categoria, mencione explicitamente a limitação
 """
         
         return prompt
@@ -412,7 +465,7 @@ Timestamps críticos: {', '.join(critical_timestamps) if critical_timestamps els
 
 **TAREFA**
 
-Gere um laudo psicológico DETALHADO em português (pt-BR) seguindo a estrutura:
+Gere um laudo psicológico DETALHADO e COMPLETO em português (pt-BR) seguindo a estrutura:
 
 **IMPORTANTE: O relatório DEVE começar com o seguinte cabeçalho EXATAMENTE formatado:**
 
@@ -425,77 +478,217 @@ Nível de Risco Geral Detectado: {analysis_result.overall_risk_level.upper()}
 
 ---
 
-## 🎤 Perfil Vocal e Características Acústicas
-- Descreva tom médio (grave/agudo), variação de pitch
-- Análise de energia vocal (fraca/forte, variação)
-- Ritmo da fala (lenta/rápida, pausas frequentes)
-- Qualidade vocal (tremor, quebras, estabilidade)
+## 🎤 Perfil Vocal e Características Acústicas Detalhadas
 
-## 🧠 Indicadores Psicológicos Identificados
+### Prosódia e Dinâmica Vocal
+- **Tom médio**: Descreva se é grave, médio ou agudo, e variação de pitch ao longo da fala
+- **Energia vocal**: Analise intensidade (fraca/forte), modulação, e quedas abruptas de volume
+- **Ritmo da fala**: Avalie velocidade (lenta/rápida/variável), presença de pausas prolongadas, hesitações
+- **Qualidade vocal**: Identifique tremor, quebras vocais, rouquidão, instabilidade, monotonia
+
+### Padrões Temporais
+- Distribuição de pausas (duração média, localização no discurso)
+- Variação de velocidade ao abordar diferentes tópicos
+- Fluência vs hesitação em momentos específicos
+- Latência de resposta (tempo para iniciar fala após pergunta)
+
+### Marcadores Acústicos Específicos
+- Suspiros audíveis (frequência e contexto)
+- Mudanças abruptas de tom emocional
+- Padrões de respiração (ofegante, superficial, profunda)
+- Vocalizações não-verbais (choro, risos, gemidos)
+
+## 🧠 Indicadores Psicológicos Identificados - Análise Detalhada
 
 ### 😔 Depressão / Depressão Pós-Parto
-- **SE DETECTADO**: Descreva padrões específicos (tom baixo, monotonia, silêncios prolongados, falta de energia)
-- **SE NÃO DETECTADO**: Mencione brevemente que não foram identificados padrões característicos
-- Correlacione com o contexto da consulta
+**SE DETECTADO:**
+- Descreva especificamente os padrões acústicos observados:
+  * Tom vocal baixo e monotonia (falta de variação emocional)
+  * Silêncios prolongados e pausas excessivas
+  * Baixa energia vocal persistente
+  * Lentificação psicomotora refletida na fala
+  * Possível anedonia refletida em tom apático
+- Contextualize com o tipo de consulta (gestacional/pós-parto/ginecológica)
+- Avalie gravidade baseado em:
+  * Intensidade dos marcadores (leve/moderada/grave)
+  * Persistência dos padrões ao longo da gravação
+  * Correlação com múltiplos indicadores
+- Para contexto pós-parto: diferenciar entre "baby blues" (primeiras 2 semanas) vs depressão pós-parto (persistente > 2 semanas)
+- Listar segmentos específicos com timestamps onde os padrões são mais evidentes
+
+**SE NÃO DETECTADO:**
+- Confirme explicitamente ausência de marcadores depressivos
+- Descreva padrões vocais saudáveis observados (variação adequada, energia apropriada)
 
 ### 😰 Ansiedade / Ansiedade Gestacional
-- **SE DETECTADO**: Descreva manifestações (variação rápida de pitch, fala acelerada, tremor vocal, alta energia)
-- **SE NÃO DETECTADO**: Confirme ausência de padrões ansiosos
-- Para consultas pré-natais, abordar ansiedade gestacional especificamente
+**SE DETECTADO:**
+- Descreva especificamente os padrões acústicos observados:
+  * Variação rápida e errática de pitch (voz "tremida")
+  * Fala acelerada e atropelada
+  * Alta energia vocal com tensão muscular audível
+  * Padrão respiratório alterado (superficial, ofegante)
+  * Tremor vocal fino persistente
+  * Pausas abruptas seguidas de retomada rápida
+- Para contexto gestacional: identifique se é ansiedade situacional (natural da gestação) vs transtorno de ansiedade
+- Avalie se há correlação com tópicos específicos (saúde do bebê, parto, mudanças corporais)
+- Liste momentos críticos com alta carga ansiosa (timestamps)
+- Diferencie ansiedade aguda (picos) vs ansiedade crônica de fundo
+
+**SE NÃO DETECTADO:**
+- Confirme ausência de padrões ansiosos significativos
+- Descreva estabilidade vocal e controle emocional observado
 
 ### 🗣️ Hesitação e Distress Vocal
-- Análise de pausas, hesitações ao relatar sintomas
-- Tremor ou instabilidade vocal
-- Possíveis dificuldades em expressar desconforto
+- **Análise de pausas**: Identifique pausas > 2 segundos e seu contexto
+- **Hesitações lexicais**: "Ah...", "Hmm...", "é que..." ao relatar sintomas ou experiências difíceis
+- **Bloqueios de fala**: Momentos onde a paciente parece querer falar mas não consegue
+- **Tremor vocal sob pressão**: Instabilidade aumentada ao abordar temas sensíveis
+- **Mudanças de tópico**: Desvios abruptos para evitar assuntos dolorosos
+- Liste timestamps específicos de maior distress vocal
 
-### ⚠️ Sinais de Alerta (Trauma/Violência)
-- **SE DETECTADO**: Abordar com MÁXIMA SENSIBILIDADE
-- Padrões de hesitação extrema, quedas abruptas de energia
-- Inconsistências emocionais
-- **Sempre sugerir encaminhamento para serviço especializado**
+### ⚠️ Sinais de Alerta (Trauma/Violência Doméstica/Abuso)
+**ABORDAGEM COM MÁXIMA SENSIBILIDADE E CUIDADO**
 
-## ⏱️ Linha do Tempo - Momentos Críticos
-[Para cada segmento de alto risco, forneça:
-- Timestamp exato (início-fim)
-- Indicadores detectados
-- Descrição do padrão vocal
-- Possível significado clínico]
+**SE DETECTADO:**
+- Padrões de hesitação extrema ao descrever relações ou contexto doméstico
+- Quedas abruptas de energia vocal seguidas de recuperação forçada
+- Inconsistências emocionais (riso nervoso em contextos tristes, minimização verbal mas carga emocional vocal)
+- Tremor vocal intenso em tópicos específicos (relação conjugal, família)
+- Pausas prolongadas antes de responder perguntas sobre vida pessoal
+- Padrões de autocensura (frases iniciadas e interrompidas)
+- Tom submisso, desculpas excessivas, auto-depreciação
 
-## 💡 Interpretação Clínica Integrada
-[Parágrafo conectando os achados acústicos com:
-- Contexto do tipo de consulta
-- Possíveis condições subjacentes
-- Necessidade de investigação adicional]
+**IMPORTANTE**: 
+- **NÃO faça acusações ou diagnósticos diretos**
+- Descreva os padrões acústicos objetivamente
+- **SEMPRE sugira encaminhamento para serviço especializado** (psicólogo clínico, assistente social, delegacia da mulher)
+- Mencione recursos disponíveis (Central de Atendimento à Mulher 180, CVV 188)
 
-## 🩺 Recomendações para Acompanhamento
-1. [Recomendação baseada em indicadores específicos detectados]
-2. [Sugestão de avaliação complementar se necessário]
-3. [Orientação sobre follow-up e periodicidade]
-4. [Encaminhamentos para especialistas se indicado]
-5. [Medidas de suporte imediato se risco identificado]
+**SE NÃO DETECTADO:**
+- Confirme que não foram identificados padrões vocais sugestivos de trauma
+
+## ⏱️ Linha do Tempo - Momentos Críticos Detalhados
+[Para cada segmento de alto risco identificado, forneça:
+- **Timestamp**: [MM:SS início] - [MM:SS fim]
+- **Duração**: [X segundos]
+- **Indicadores detectados**: [lista específica]
+- **Descrição do padrão vocal**: [características acústicas observadas]
+- **Possível significado clínico**: [interpretação contextualizada]
+- **Nível de confiança**: [percentual da detecção automatizada]
+- **Recomendação**: [ação específica sugerida]]
+
+Exemplo de formato:
+```
+🚨 Segmento Crítico 1:
+Timestamp: 02:35 - 03:12 (37 segundos)
+Indicadores: Depressão + Hesitação
+Padrão vocal: Tom extremamente baixo, pausas de 3-5s entre frases, energia vocal mínima
+Significado clínico: Possível episódio depressivo moderado a grave
+Confiança: 78%
+Recomendação: Avaliação presencial urgente, considerar escala PHQ-9
+```
+
+## 💡 Interpretação Clínica Integrada e Contextualizada
+[Parágrafo conectando TODOS os achados acústicos com o contexto clínico completo:
+- Correlacione os indicadores detectados entre si (ex: ansiedade + depressão = possível transtorno misto)
+- Contextualize com o tipo de consulta (pré-natal: ansiedade gestacional é comum; pós-parto: rastreio de DPP é essencial)
+- Se for primeira gestação: comente sobre a naturalidade de certa ansiedade vs indicadores patológicos
+- Se for mãe experiente: compare com padrões esperados para quem já tem experiência
+- Relacione com a idade da paciente e possíveis fatores de risco
+- Identifique possíveis condições subjacentes baseadas no conjunto de indicadores
+- Sugira hipóteses diagnósticas preliminares (sempre com cautela e indicando necessidade de confirmação)
+- Destaque necessidade de investigação adicional com testes padronizados (PHQ-9 para depressão, GAD-7 para ansiedade, EPDS para depressão pós-parto)]
+
+## 🩺 Recomendações Detalhadas para Acompanhamento
+[Pelo menos 6 recomendações específicas e acionáveis:]
+
+### Recomendações Imediatas (próximas 24-48h)
+1. [Ação específica baseada em risco detectado - ex: se risco alto, contato imediato com serviço de saúde mental]
+2. [Aplicação de escalas padronizadas específicas - PHQ-9, GAD-7, EPDS, etc.]
+
+### Recomendações de Curto Prazo (1-2 semanas)
+3. [Avaliação complementar necessária - ex: consulta com psicólogo clínico, psiquiatra]
+4. [Sugestão de modalidade terapêutica apropriada - terapia cognitivo-comportamental, psicoterapia interpessoal, grupo de apoio]
+
+### Recomendações de Médio Prazo (1-3 meses)
+5. [Orientação sobre follow-up e periodicidade - ex: reavaliações mensais, monitoramento trimestral]
+6. [Envolvimento de rede de apoio - família, parceiro, grupos comunitários]
+
+### Encaminhamentos Especializados (se indicado)
+7. [Psiquiatria: se suspeita de transtorno depressivo maior, transtorno de ansiedade generalizada] 8. [Serviço social: se identificados fatores de risco socioeconômicos ou violência doméstica]
+9. [Obstetrícia de alto risco: se indicadores graves em contexto gestacional]
+
+### Medidas de Suporte e Prevenção
+10. [Orientações sobre higiene do sono, atividade física, rede de apoio social]
+11. [Psicoeducação sobre sinais de alerta e quando buscar ajuda]
+12. [Recursos comunitários disponíveis - grupos de apoio, ONGs, serviços públicos]
+
+**Se risco ALTO ou CRÍTICO detectado:**
+- ⚠️ **AÇÃO IMEDIATA NECESSÁRIA**: Contato com serviço de emergência ou CAPS (Centro de Atenção Psicossocial)
+- Disponibilizar recursos de crise: CVV 188 (24h), Central da Mulher 180, SAMU 192
+- Considerar necessidade de acompanhamento familiar/parceiro
+- Avaliar risco de auto-agressão ou ideação suicida (requer avaliação presencial urgente)
 
 ## ⚙️ Limitações da Análise Automatizada
-[Parágrafo claro sobre:
-- Limitações da análise acústica computacional
-- Impossibilidade de captar contexto verbal completo
-- Necessidade de avaliação presencial por profissional
-- Fatores que podem influenciar padrões vocais (qualidade do áudio, ruído, etc.)]
+[Parágrafo abrangente e honesto sobre limitações:
+- Sistema baseia-se EXCLUSIVAMENTE em padrões acústicos (prosódia, energia, ritmo)
+- **NÃO tem acesso ao conteúdo verbal completo** - palavras específicas, narrativa, contexto semântico
+- Fatores técnicos que podem afetar análise: qualidade do áudio, ruído ambiente, microfone, reverberação
+- Fatores individuais não capturados: personalidade de base da paciente, estilo comunicativo natural, variações culturais
+- Condições temporárias que afetam voz: resfriado, cansaço, rouquidão, uso de medicamentos
+- Sistema não substitui entrevista clínica estruturada, anamnese completa, exame do estado mental
+- Necessidade ABSOLUTA de avaliação presencial por profissional de saúde mental qualificado
+- Análise computacional é ferramenta de TRIAGEM e SUPORTE, não diagnóstico definitivo]
 
-## ⚖️ Disclaimer Médico-Legal
-**IMPORTANTE:** Este relatório foi gerado pelo sistema **Gemini 2.5 Flash** baseado em análise acústica automatizada. **NÃO constitui diagnóstico clínico** e deve ser interpretado exclusivamente por profissional de saúde mental qualificado. Em caso de risco iminente identificado, contate imediatamente serviços de emergência (CVV 188, SAMU 192) ou Delegacia da Mulher.
+## 📚 Fundamentação Técnica
+[Breve explicação da metodologia:
+- Sistema utiliza análise acústica computacional baseada em machine learning
+- Marcadores vocais correlacionam-se com estados emocionais conforme literatura científica
+- Modelos treinados em corpus de consultas clínicas anotadas
+- Taxa de sensibilidade e especificidade do sistema: [se disponível]
+- Referências: estudos de análise vocal em saúde mental, marcadores prosódicos de depressão/ansiedade]
+
+## ⚖️ Disclaimer Médico-Legal Completo
+**IMPORTANTE - LEIA ATENTAMENTE:**
+
+Este relatório foi gerado pelo sistema **Gemini 2.5 Flash** baseado em análise acústica automatizada de voz. **NÃO constitui diagnóstico clínico psicológico ou psiquiátrico** e deve ser interpretado **exclusivamente por profissional de saúde mental qualificado** (psicólogo clínico, psiquiatra).
+
+**Limitações e responsabilidades:**
+- Sistema analisa apenas características acústicas da voz, não o conteúdo verbal
+- Não substitui avaliação presencial, anamnese, entrevista clínica ou aplicação de instrumentos padronizados
+- Resultados devem ser interpretados em conjunto com história clínica, exame psíquico, contexto psicossocial
+- Profissional de saúde é o único responsável por decisões clínicas baseadas neste relatório
+- Em caso de risco iminente identificado (ideação suicida, violência), **contate imediatamente**:
+  * CVV - Centro de Valorização da Vida: 188 (24h, gratuito)
+  * SAMU: 192
+  * Central de Atendimento à Mulher: 180
+  * Delegacia da Mulher (em casos de violência doméstica)
+  * CAPS mais próximo (Centro de Atenção Psicossocial)
+
+**Privacidade e ética:**
+- Informações da paciente são confidenciais e protegidas por sigilo profissional
+- Uso do relatório deve seguir código de ética profissional aplicável (Psicologia, Medicina)
+- Armazenamento de dados deve seguir LGPD (Lei Geral de Proteção de Dados)
 
 ---
 
-**DIRETRIZES CRÍTICAS**
+**DIRETRIZES CRÍTICAS PARA GERAÇÃO DO RELATÓRIO**
 - **CABEÇALHO OBRIGATÓRIO**: O relatório DEVE começar EXATAMENTE com o cabeçalho formatado especificado acima, com cada campo em uma linha separada
 - **PERSONALIZAÇÃO**: Se houver dados da paciente, use APENAS o primeiro nome dela conforme informado (ex: "A análise de {primeiro_nome} detectou...", "{primeiro_nome} apresenta padrões vocais...")
-- **IMPORTANTE**: NÃO INVENTE NOMES. Se não houver nome da paciente nos dados acima, use apenas "a paciente" ou "paciente"
-- **CONTEXTO GESTACIONAL**: Se for primeira gestação, mencione que pode ser um momento de maior ansiedade natural; se for mãe experiente, contextualize com base nisso
-- Linguagem técnica mas compassiva e acolhedora
-- Baseado EXCLUSIVAMENTE em padrões acústicos objetivos (não invente informações verbais)
-- Máximo 700 palavras para análise completa e detalhada
-- Enfatizar SEMPRE necessidade de avaliação presencial
-- Se houver risco alto, destacar claramente necessidade de ação imediata
+- **IMPORTANTE**: NÃO INVENTE NOMES. Se não houver nome da paciente nos dados acima, use apenas "a paciente" ou "paciente analisada"
+- **CONTEXTO GESTACIONAL**: 
+  * Se primeira gestação: mencione que ansiedade moderada é comum, diferencie ansiedade adaptativa de patológica
+  * Se mãe experiente: contextualize com base em experiências prévias, avaliar se há diferença em relação a gestações anteriores (se pós-parto)
+- **Linguagem técnica mas compassiva e acolhedora**: use terminologia clínica apropriada mas mantenha tom empático
+- **Baseado EXCLUSIVAMENTE em padrões acústicos objetivos**: NÃO invente informações verbais, narrativas ou contextos que não estão nos dados
+- **NÃO limite o tamanho do relatório**: seja tão detalhado quanto necessário para uma análise completa e útil clinicamente (recomendado: 1500-2500 palavras)
+- **Priorize DETALHAMENTO e ESPECIFICIDADE** sobre brevidade - relatório deve ser ferramenta útil para profissional
+- **Enfatizar SEMPRE necessidade de avaliação presencial** e que análise automatizada é ferramenta de suporte, não substituta
+- **Se houver risco alto detectado**, destacar CLARAMENTE necessidade de ação imediata e recursos de crise disponíveis
+- **Use emojis nos títulos** para melhor organização visual e facilitar leitura
+- **Numere recomendações** para facilitar implementação pelo profissional
+- **Cite timestamps específicos** sempre que mencionar momentos críticos ou padrões vocais
+- **Seja honesto sobre limitações**: se não houver informação suficiente em alguma categoria, mencione explicitamente
 """
         
         return prompt
@@ -551,8 +744,8 @@ Nível de Risco Geral Detectado: {analysis_result.overall_risk_level.upper()}
         # Contagem de aparições por instrumento
         instrument_counts = {}
         for frame in analysis_result.frames:
-            for det in frame.detections:
-                instrument_counts[det.class_name] = instrument_counts.get(det.class_name, 0) + 1
+            for bbox in frame.bounding_boxes:
+                instrument_counts[bbox.label] = instrument_counts.get(bbox.label, 0) + 1
         
         lines = ["| Instrumento | Detecções | Frequência |"]
         lines.append("|------------|-----------|------------|")
@@ -584,7 +777,7 @@ Nível de Risco Geral Detectado: {analysis_result.overall_risk_level.upper()}
                 f for f in analysis_result.frames 
                 if start <= f.timestamp_seconds < end
             ]
-            detections_in_quartile = sum(len(f.detections) for f in frames_in_quartile)
+            detections_in_quartile = sum(len(f.bounding_boxes) for f in frames_in_quartile)
             critical_in_quartile = len([f for f in frames_in_quartile if f.severity == "critical"])
             
             lines.append(f"**{name}** ({start:.1f}s - {end:.1f}s)")
@@ -773,9 +966,9 @@ Nível de Risco Geral Detectado: {analysis_result.overall_risk_level.upper()}
         # Identifica instrumentos detectados
         instruments_detected = []
         for frame in analysis_result.frames:
-            for det in frame.detections:
-                if det.class_name not in instruments_detected:
-                    instruments_detected.append(det.class_name)
+            for bbox in frame.bounding_boxes:
+                if bbox.label not in instruments_detected:
+                    instruments_detected.append(bbox.label)
         
         # Monta seção de achados detalhada
         detailed_findings = self._format_detailed_findings(analysis_result)

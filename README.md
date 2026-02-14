@@ -108,7 +108,7 @@ O **MedVision AI** é uma solução completa para análise assistida por IA de p
 4. **Detecção**: YOLOv8 analisa cada frame e detecta anomalias
 5. **Classificação**: Sistema classifica severidade (critical/warning/info)
 6. **Alertas**: WebSocket notifica frontend em tempo real
-7. **Relatório**: Gemini 2.0 Flash gera análise clínica contextualizada
+7. **Relatório**: Gemini 2.5 Flash gera análise clínica contextualizada
 8. **Visualização**: React exibe bounding boxes sincronizadas com vídeo
 
 ---
@@ -323,7 +323,69 @@ curl "http://localhost:8000/api/v1/video/result/abc123"
 
 ## 🌐 Deploy
 
-### Google Cloud Run
+> 🎯 **Deployment em Produção**: A aplicação está atualmente rodando no **Azure Container Apps** - [Acesse aqui](https://medvision-frontend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io/)
+
+### Azure Container Apps (Recomendado) ⭐
+
+**Deploy Completo e Funcional** - Sistema 100% operacional no Azure com Gemini 2.5 Flash
+
+1. **URLs de Acesso:**
+   - **Frontend**: https://medvision-frontend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io/
+   - **Backend API**: https://medvision-backend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io/
+   - **Swagger Docs**: https://medvision-backend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io/docs
+
+2. **Recursos Provisionados:**
+   - **Container Apps Environment**: medvision-env (Brazil South)
+   - **Azure Container Registry**: medvisionacr.azurecr.io
+   - **Backend Container**: 1.0 vCPU, 2.0 Gi RAM (1-3 réplicas)
+   - **Frontend Container**: 0.5 vCPU, 1.0 Gi RAM (1-3 réplicas)
+   - **Log Analytics**: Habilitado para monitoramento
+
+3. **Deploy do Backend:**
+
+```bash
+# Build e push da imagem
+docker build -t medvisionacr.azurecr.io/medvision-backend:latest backend/
+docker push medvisionacr.azurecr.io/medvision-backend:latest
+
+# Criar ou atualizar Container App
+az containerapp update \
+  --name medvision-backend \
+  --resource-group medvision-rg \
+  --image medvisionacr.azurecr.io/medvision-backend:latest \
+  --set-env-vars \
+    ENVIRONMENT=production \
+    GOOGLE_API_KEY=<sua-chave-gemini> \
+    STORAGE_TYPE=local \
+    LOG_LEVEL=INFO \
+    CORS_ORIGINS=https://medvision-frontend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io
+```
+
+4. **Deploy do Frontend:**
+
+```bash
+# Build e push da imagem
+docker build -t medvisionacr.azurecr.io/medvision-frontend:latest frontend/
+docker push medvisionacr.azurecr.io/medvision-frontend:latest
+
+# Criar ou atualizar Container App
+az containerapp update \
+  --name medvision-frontend \
+  --resource-group medvision-rg \
+  --image medvisionacr.azurecr.io/medvision-frontend:latest \
+  --set-env-vars \
+    VITE_API_URL=https://medvision-backend.livelycoast-50c79e76.brazilsouth.azurecontainerapps.io
+```
+
+5. **Documentação Completa:**
+   - 📖 [AZURE_DEPLOYMENT_SUCCESS.md](./AZURE_DEPLOYMENT_SUCCESS.md) - Guia completo com troubleshooting e resolução de problemas
+   - ⚡ Scripts automatizados em [`./scripts/deployment/`](./scripts/deployment/)
+
+**Custos Estimados**: Pay-as-you-go (~$0.50-2.00/dia com tráfego baixo, $0 sem uso)
+
+---
+
+### Google Cloud Run (Alternativo)
 
 1. **Pré-requisitos:**
    - Conta GCP com billing ativado

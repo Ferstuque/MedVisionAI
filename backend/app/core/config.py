@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     # Google Gemini API
     GOOGLE_API_KEY: str = Field(..., description="API key do Google Gemini")
     GEMINI_MODEL: str = Field(
-        default="gemini-2.0-flash-exp",
-        description="Modelo Gemini a usar (ex: gemini-2.5-pro)"
+        default="gemini-2.5-flash",
+        description="Modelo Gemini a usar (ex: gemini-2.5-flash, gemini-2.5-pro, gemini-flash-latest)"
     )
     
     # YOLOv8 Configuration
@@ -95,10 +95,17 @@ class Settings(BaseSettings):
     )
     
     # CORS Configuration
-    CORS_ORIGINS: list[str] = Field(
-        default=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
-        description="Origens permitidas para CORS"
+    CORS_ORIGINS: str = Field(
+        default="http://localhost:5173,http://localhost:5174,http://localhost:3000",
+        description="Origens permitidas para CORS (separadas por vírgula)"
     )
+    
+    @property
+    def cors_origins_list(self) -> list[str]:
+        """Retorna CORS_ORIGINS como lista."""
+        if isinstance(self.CORS_ORIGINS, list):
+            return self.CORS_ORIGINS
+        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
     
     # Application Configuration
     APP_ENV: str = Field(

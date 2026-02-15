@@ -66,16 +66,16 @@ Sistema fullstack para análise em tempo real de vídeos e áudios cirúrgicos g
 
 ##  Índice
 
-- [Visão Geral](#-visão-geral)
-- [Arquitetura](#-arquitetura)
-- [Funcionalidades](#-funcionalidades)
-- [Tecnologias](#-tecnologias)
-- [Pré-requisitos](#-pré-requisitos)
-- [Instalação Local](#-instalação-local)
-- [Deploy no Azure Container Apps](#-deploy-no-azure-container-apps)
-- [Documentação Adicional](#-documentação-adicional)
-- [Limitações](#-limitações-e-disclaimers)
-- [Licença](#-licença)
+- [Visão Geral](#visão-geral)
+- [Arquitetura](#arquitetura)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação Local](#instalação-local)
+- [Deploy no Azure Container Apps](#deploy-no-azure-container-apps)
+- [Documentação Adicional](#documentação-adicional)
+- [Limitações](#limitações-e-disclaimers)
+- [Licença](#licença)
 
 ---
 

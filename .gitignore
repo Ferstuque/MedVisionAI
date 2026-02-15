@@ -127,6 +127,7 @@ desktop.ini
 # Jupyter Notebooks
 .ipynb_checkpoints
 *.ipynb
+!backend/notebooks/*.ipynb
 
 # Model files
 models/

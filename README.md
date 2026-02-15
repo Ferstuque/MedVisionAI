@@ -40,6 +40,10 @@ Após analisar os vídeos e áudios, o sistema gera relatórios completos e orga
 
 ---
 
+### 📺 [Vídeo Demonstrativo](https://youtu.be/y4L6lIbFaIg)
+
+---
+
 <details>
 <summary><b>📚 Para profissionais técnicos: Detalhes da implementação</b></summary>
 
@@ -50,11 +54,13 @@ Sistema fullstack para análise em tempo real de vídeos e áudios cirúrgicos g
 **Stack Técnico:**
 - **Backend**: Python 3.11, FastAPI, Uvicorn, YOLOv8, OpenCV, Librosa
 - **Frontend**: React 18, Vite 5, TailwindCSS
+- **Features**: WebSocket real-time, processamento de vídeo frame-by-frame, análise acústica temporal
 - **IA Generativa**: Google Gemini 2.5 Flash (multimodal)
 - **Cloud**: Azure Container Apps, Azure Container Registry
 - **Features**: WebSocket real-time, processamento de vídeo frame-by-frame, análise acústica temporal
 
 </details>
+
 
 ---
 
@@ -618,8 +624,6 @@ Contribuições são bem-vindas!
 
 <div align="center">
 
-**Desenvolvido com  para avançar a IA em saúde**
-
-[ Voltar ao topo](#-medvision-ai)
+**Desenvolvido para avançar com a IA em saúde**
 
 </div>
